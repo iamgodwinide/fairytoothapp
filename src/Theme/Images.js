@@ -10,5 +10,14 @@ export default function () {
     profilepic: require("@/Assets/Images/profilepic.png"),
     kidsBrushAndPaste: require("@/Assets/Images/KidsBrushAndPaste.png"),
     homeBgPic: require("@/Assets/Images/ToothBrush.png"),
+    navBg: require("@/Assets/Images/Bg.jpg"),
+
+    toothImage: require("@/Assets/Images/ActivityLogo.png"),
+    health: require("@/Assets/Images/Health.png"),
+    rinsing: require("@/Assets/Images/Rinsing.png"),
+    flossing: require("@/Assets/Images/Flossing.png"),
+    brushing: require("@/Assets/Images/Brushing.png"),
+    kidsBrush: require("@/Assets/Images/KidsBrushing.jpg"),
+    
   }
 }

@@ -24,6 +24,7 @@ import { useTheme } from '@/Hooks'
 
 import { navigationRef } from './utils'
 import { useSelector } from 'react-redux'
+import DrawerNavigator from './Drawers'
 
 
 const Stack = createStackNavigator()
@@ -67,12 +68,14 @@ const ApplicationNavigator = () => {
           }
 
           <Stack.Screen
-            name="Home"
-            component={IndexHomeContainer}
-            options={{
-              animationEnabled: true,
-            }}
-          />
+          name="Home"
+          component={DrawerNavigator}
+          options={{
+            animationEnabled: true,
+          }}
+        />
+
+        
           <Stack.Screen
             name="AddChild"
             component={IndexAddChildContainer}
