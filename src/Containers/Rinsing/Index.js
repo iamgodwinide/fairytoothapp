@@ -1,14 +1,42 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Alert, BackHandler, Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useCallback, useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import Icon from 'react-native-dynamic-vector-icons'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { Colors } from '@/Theme/Variables'
 import Ripple from 'react-native-material-ripple'
 import { navigateAndSimpleReset } from '@/Navigators/utils'
+import showAlert from '@/utils/message'
 
 const Rinsing = () => {
-    const navigation = useNavigation();
+    const [rinseCount, setRinseCount] = useState(3);
+
+    const handleRinse = () => {
+        if (rinseCount > 0) {
+            setRinseCount(rinseCount - 1);
+        }
+    }
+
+    const handleFinish = () => {
+        showAlert("Activity completed", "success");
+        navigateAndSimpleReset("Home");
+    }
+
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                return true
+            };
+
+            BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () =>
+                BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        }, [])
+    );
+
+
     return (
         <ScrollView
             style={{
@@ -78,11 +106,24 @@ const Rinsing = () => {
                     justifyContent: "center",
                     alignItems: "center"
                 }}>
-                    <Text style={{
-                        fontSize: 45,
-                        fontFamily: "NotoSans-SemiBold",
-                        color: "grey"
-                    }}>3</Text>
+                    {rinseCount > 0 ?
+                        <Text style={{
+                            fontSize: 45,
+                            fontFamily: "NotoSans-SemiBold",
+                            color: "grey"
+                        }}>
+                            {rinseCount}
+                        </Text>
+                        : <Text
+                            style={{
+                                fontSize: 15,
+                                fontFamily: "NotoSans-SemiBold",
+                                color: "grey"
+                            }}
+                        >
+                            Complete
+                        </Text>
+                    }
                 </View>
                 <View style={{
                     flexDirection: "row",
@@ -99,24 +140,43 @@ const Rinsing = () => {
                 </View>
             </View>
 
-
-            <Ripple
-                onPress={() => navigateAndSimpleReset("Home")}
-                style={{
-                    padding: 10,
-                    marginVertical: 10,
-                    backgroundColor: "#03c407",
-                    alignItems: "center",
-                    width: "80%",
-                    alignSelf: "center",
-                    borderRadius: 20
-                }}>
-                <Text style={{
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontFamily: "NotoSans-Bold",
-                }}>Finish!</Text>
-            </Ripple>
+            {
+                rinseCount > 0
+                    ? <Ripple
+                        onPress={handleRinse}
+                        style={{
+                            padding: 10,
+                            marginVertical: 10,
+                            backgroundColor: "#03c407",
+                            alignItems: "center",
+                            width: "80%",
+                            alignSelf: "center",
+                            borderRadius: 20
+                        }}>
+                        <Text style={{
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontFamily: "NotoSans-Bold",
+                        }}>Rinse</Text>
+                    </Ripple>
+                    : <Ripple
+                        onPress={handleFinish}
+                        style={{
+                            padding: 10,
+                            marginVertical: 10,
+                            backgroundColor: "#03c407",
+                            alignItems: "center",
+                            width: "80%",
+                            alignSelf: "center",
+                            borderRadius: 20
+                        }}>
+                        <Text style={{
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontFamily: "NotoSans-Bold",
+                        }}>Finish!</Text>
+                    </Ripple>
+            }
 
         </ScrollView>
     )

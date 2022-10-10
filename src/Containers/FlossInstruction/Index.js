@@ -148,7 +148,7 @@ const FlossInstruction = () => {
                     </View>
                     <ActionButton
                         onPress={() => navigation.navigate("Flossing")}
-                        text={"Start Brushing"} textColor="#bf9500" backgroundColor={Colors.white} />
+                        text={"Start Flossing"} textColor="#bf9500" backgroundColor={Colors.white} />
                     <View style={{
                         marginVertical: 20
                     }} />

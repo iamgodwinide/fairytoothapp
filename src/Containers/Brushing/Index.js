@@ -1,14 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Alert, BackHandler, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import Icon from 'react-native-dynamic-vector-icons'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { Colors } from '@/Theme/Variables'
 import Slider from '@react-native-community/slider';
 import Ripple from 'react-native-material-ripple'
 import { useEffect } from 'react'
 import CountDown from 'react-native-countdown-component';
 import showAlert from '@/utils/message'
+import { useCallback } from 'react'
+import { navigateAndSimpleReset } from '@/Navigators/utils'
 
 const Brushing = () => {
     const navigation = useNavigation();
@@ -17,7 +19,7 @@ const Brushing = () => {
 
     const handleNext = () => {
         setPause(true);
-        if (value < 60) {
+        if (value < 0) {
             showAlert("Minimum brush time is 1 minute", "warning");
         } else {
             navigation.navigate("FlossInstruction");
@@ -27,6 +29,19 @@ const Brushing = () => {
     const handleFinish = () => {
         showAlert("Maximum brushing time reach, proceed to flossing.", "warning");
     }
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                return true
+            };
+
+            BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () =>
+                BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        }, [])
+    );
 
     return (
         <ScrollView

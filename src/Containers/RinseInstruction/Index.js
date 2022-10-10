@@ -157,7 +157,7 @@ const RinseInstruction = () => {
                     </View>
                     <ActionButton
                         onPress={() => navigation.navigate("Rinsing")}
-                        text={"Start Brushing"} textColor="blue" backgroundColor={Colors.white} />
+                        text={"Start Rinsing"} textColor="blue" backgroundColor={Colors.white} />
                     <View style={{ marginVertical: 20 }} />
                 </View>
             </View>

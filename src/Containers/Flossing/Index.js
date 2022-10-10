@@ -9,6 +9,7 @@ import Ripple from 'react-native-material-ripple'
 import CountDown from 'react-native-countdown-component';
 import { useState } from 'react'
 import showAlert from '@/utils/message'
+import { useCallback } from 'react'
 
 
 
@@ -19,16 +20,29 @@ const Flossing = () => {
 
     const handleNext = () => {
         setPause(true);
-        if (value < 60) {
-            showAlert("Minimum brush time is 1 minute", "warninig");
+        if (value < 0) {
+            showAlert("Minimum brush time is 1 minute", "warning");
         } else {
-            navigation.navigate("RinsingInstruction");
+            navigation.navigate("RinseInstruction");
         }
     }
 
     const handleFinish = () => {
-        showAlert("Maximum brushing time reach, proceed to flossing.", "warning");
+        showAlert("Maximum flossing time reach, proceed to flossing.", "warning");
     }
+
+    useFocusEffect(
+        useCallback(() => {
+            const onBackPress = () => {
+                return true
+            };
+
+            BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+            return () =>
+                BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        }, [])
+    );
 
     return (
         <ScrollView
