@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import {
   IndexAddChildContainer,
-  IndexHomeContainer,
   IndexLoginContainer,
   IndexProfileContainer,
   IndexProfileSettingsContainer,
@@ -19,6 +18,7 @@ import {
   IndexRinseInstructionContainer,
   IndexRinsingContainer,
   StartupContainer,
+  IndexWaterPlan,
 } from '@/Containers'
 import { useTheme } from '@/Hooks'
 
@@ -42,7 +42,7 @@ const ApplicationNavigator = () => {
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="Main"
+          initialRouteName="WaterPlan"
         >
           {/* <Stack.Screen name="Startup" component={StartupContainer} /> */}
 
@@ -68,14 +68,22 @@ const ApplicationNavigator = () => {
           }
 
           <Stack.Screen
-          name="Home"
-          component={DrawerNavigator}
-          options={{
-            animationEnabled: true,
-          }}
-        />
+            name="Waterplan"
+            component={IndexWaterPlan}
+            options={{
+              animationEnabled: false,
+            }}
+          />
 
-        
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{
+              animationEnabled: true,
+            }}
+          />
+
+
           <Stack.Screen
             name="AddChild"
             component={IndexAddChildContainer}
@@ -158,8 +166,7 @@ const ApplicationNavigator = () => {
             component={IndexRinsingContainer}
             options={{
               animationEnabled: false,
-            }}
-          />
+            }} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
