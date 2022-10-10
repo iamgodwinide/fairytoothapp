@@ -19,7 +19,7 @@ const Brushing = () => {
 
     const handleNext = () => {
         setPause(true);
-        if (value < 0) {
+        if (value < 60) {
             showAlert("Minimum brush time is 1 minute", "warning");
         } else {
             navigation.navigate("FlossInstruction");
