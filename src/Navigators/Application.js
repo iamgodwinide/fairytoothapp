@@ -26,7 +26,6 @@ import { navigationRef } from './utils'
 import { useSelector } from 'react-redux'
 import DrawerNavigator from './Drawers'
 
-
 const Stack = createStackNavigator()
 
 // @refresh reset
@@ -34,7 +33,7 @@ const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
 
-  const isLoggedIn = useSelector(state => state.parent.isLoggedIn);
+  const isLoggedIn = useSelector(state => state.parent.isLoggedIn)
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
@@ -46,9 +45,8 @@ const ApplicationNavigator = () => {
         >
           {/* <Stack.Screen name="Startup" component={StartupContainer} /> */}
 
-          {
-            !isLoggedIn
-            && <Stack.Group>
+          {!isLoggedIn && (
+            <Stack.Group>
               <Stack.Screen
                 name="Main"
                 component={IndexLoginContainer}
@@ -65,15 +63,8 @@ const ApplicationNavigator = () => {
                 }}
               />
             </Stack.Group>
-          }
+          )}
 
-          <Stack.Screen
-            name="Waterplan"
-            component={IndexWaterPlan}
-            options={{
-              animationEnabled: false,
-            }}
-          />
 
           <Stack.Screen
             name="Drawer"
@@ -83,7 +74,6 @@ const ApplicationNavigator = () => {
             }}
           />
 
-
           <Stack.Screen
             name="AddChild"
             component={IndexAddChildContainer}
@@ -91,6 +81,15 @@ const ApplicationNavigator = () => {
               animationEnabled: true,
             }}
           />
+
+          <Stack.Screen
+            name="Waterplan"
+            component={IndexWaterPlan}
+            options={{
+              animationEnabled: false,
+            }}
+          />
+
           <Stack.Screen
             name="Profile"
             component={IndexProfileContainer}
@@ -166,7 +165,8 @@ const ApplicationNavigator = () => {
             component={IndexRinsingContainer}
             options={{
               animationEnabled: false,
-            }} />
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

@@ -16,7 +16,7 @@ import { useTheme } from '@/Hooks'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-dynamic-vector-icons/build/dist/Icon'
 
-const IndexAboutFlossingContainer = () => {
+const IndexAboutHealthCareContainer = () => {
   const { Fonts, Images, Colors, MetricsSizes } = useTheme()
   const SCREEN_WIDTH = useWindowDimensions().width
   const SCREEN_HEIGHT = useWindowDimensions().height
@@ -72,7 +72,7 @@ const IndexAboutFlossingContainer = () => {
                 }}
               >
                 {' '}
-                Brushing
+                Health
               </Text>
             </View>
 
@@ -96,7 +96,7 @@ const IndexAboutFlossingContainer = () => {
             }}
           >
             <Image
-              source={Images.kidsBrush}
+              source={Images.kidsHealth}
               resizeMode={'cover'}
               style={{ width: '100%', height: 220 }}
             />
@@ -113,7 +113,7 @@ const IndexAboutFlossingContainer = () => {
                 marginTop: 15,
               }}
             >
-              About Brushing Teeth
+              About Tooth Health
             </Text>
           </View>
 
@@ -128,8 +128,10 @@ const IndexAboutFlossingContainer = () => {
               }}
             >
               {' '}
-              1. Most dentist recommend brushing for two to three minutes,
-              spending at least 30 seconds on each "quadrant" of the mouth.
+              1. The best food choices inclide cheeses, chicken or other meats,
+              nuts and milk. These foods are thought to protect tooth enamel by
+              providing the calcium and phosphorous needed to remineralize
+              teeth.
             </Text>
 
             <Text
@@ -140,8 +142,10 @@ const IndexAboutFlossingContainer = () => {
                 marginHorizontal: 15,
               }}
             >
-              2. Brushing teeth properly means taking care to reach every tooth
-              as well as every surface of every tooth.
+              2. Other choices include form/ crunchy fruity (for example,
+              apples, and pears) and vegetables. These foods have a high water
+              content, which dilutes the effects of the sugars they contain and
+              stimulate the flow of saliva.
             </Text>
 
             <Text
@@ -152,21 +156,10 @@ const IndexAboutFlossingContainer = () => {
                 marginHorizontal: 15,
               }}
             >
-              3. The tongue harbours a multitude of bacteria. A regular brush or
-              a tongue scraper can be used.
+            3. Acidic foods such as citrus fruits
             </Text>
 
-            <Text
-              style={{
-                fontWeight: '800',
-                fontSize: 16,
-                marginTop: 15,
-                marginHorizontal: 15,
-              }}
-            >
-              4. Many toothbrushes nowadays are designed as a tongue cleaners
-              too. One example is the oral-B cross Action
-            </Text>
+           
           </View>
         </ScrollView>
       </ImageBackground>
@@ -174,4 +167,4 @@ const IndexAboutFlossingContainer = () => {
   )
 }
 
-export default IndexAboutFlossingContainer
+export default IndexAboutHealthCareContainer

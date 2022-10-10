@@ -16,7 +16,7 @@ import { useTheme } from '@/Hooks'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-dynamic-vector-icons/build/dist/Icon'
 
-const IndexAboutFlossingContainer = () => {
+const IndexAboutRinsingContainer = () => {
   const { Fonts, Images, Colors, MetricsSizes } = useTheme()
   const SCREEN_WIDTH = useWindowDimensions().width
   const SCREEN_HEIGHT = useWindowDimensions().height
@@ -72,13 +72,13 @@ const IndexAboutFlossingContainer = () => {
                 }}
               >
                 {' '}
-                Brushing
+                Rinsing
               </Text>
             </View>
 
             <View style={{ flex: 1 }}>
               <Image
-                source={Images.brushing}
+                source={Images.rinsing}
                 style={{
                   width: 50,
                   height: 60,
@@ -96,7 +96,7 @@ const IndexAboutFlossingContainer = () => {
             }}
           >
             <Image
-              source={Images.kidsBrush}
+              source={Images.kidsRinse}
               resizeMode={'cover'}
               style={{ width: '100%', height: 220 }}
             />
@@ -113,7 +113,7 @@ const IndexAboutFlossingContainer = () => {
                 marginTop: 15,
               }}
             >
-              About Brushing Teeth
+              About Rinsing Teeth
             </Text>
           </View>
 
@@ -128,8 +128,12 @@ const IndexAboutFlossingContainer = () => {
               }}
             >
               {' '}
-              1. Most dentist recommend brushing for two to three minutes,
-              spending at least 30 seconds on each "quadrant" of the mouth.
+              1. Salt, water, for mouth rinsing temporarily increases the pH
+              balance of your mouth, creating an alkaline environment in which
+              bacteria struggle to surviv. Because they - along with the most
+              other natural species - generally prefer and acidic environment,
+              using the rinse often enough can make it difficult for bacteria to
+              breed.
             </Text>
 
             <Text
@@ -140,33 +144,12 @@ const IndexAboutFlossingContainer = () => {
                 marginHorizontal: 15,
               }}
             >
-              2. Brushing teeth properly means taking care to reach every tooth
-              as well as every surface of every tooth.
+              2. Rinsing can be used to soother and heal mouth sores, benefit a
+              sore throat caused by strep, tonsillities or even common cold and
+              provide emergency dental hygiene in the event you do not
             </Text>
 
-            <Text
-              style={{
-                fontWeight: '800',
-                fontSize: 16,
-                marginTop: 15,
-                marginHorizontal: 15,
-              }}
-            >
-              3. The tongue harbours a multitude of bacteria. A regular brush or
-              a tongue scraper can be used.
-            </Text>
-
-            <Text
-              style={{
-                fontWeight: '800',
-                fontSize: 16,
-                marginTop: 15,
-                marginHorizontal: 15,
-              }}
-            >
-              4. Many toothbrushes nowadays are designed as a tongue cleaners
-              too. One example is the oral-B cross Action
-            </Text>
+           
           </View>
         </ScrollView>
       </ImageBackground>
@@ -174,4 +157,4 @@ const IndexAboutFlossingContainer = () => {
   )
 }
 
-export default IndexAboutFlossingContainer
+export default IndexAboutRinsingContainer
