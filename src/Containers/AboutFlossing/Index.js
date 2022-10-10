@@ -72,15 +72,15 @@ const IndexAboutFlossingContainer = () => {
                 }}
               >
                 {' '}
-                Brushing
+                Flossing
               </Text>
             </View>
 
             <View style={{ flex: 1 }}>
               <Image
-                source={Images.brushing}
+                source={Images.flossing}
                 style={{
-                  width: 50,
+                  width: 80,
                   height: 60,
                 }}
               />
@@ -96,7 +96,7 @@ const IndexAboutFlossingContainer = () => {
             }}
           >
             <Image
-              source={Images.kidsBrush}
+              source={Images.kidsFloss}
               resizeMode={'cover'}
               style={{ width: '100%', height: 220 }}
             />
@@ -113,7 +113,7 @@ const IndexAboutFlossingContainer = () => {
                 marginTop: 15,
               }}
             >
-              About Brushing Teeth
+              About Flossing Teeth
             </Text>
           </View>
 
@@ -127,9 +127,9 @@ const IndexAboutFlossingContainer = () => {
                 flexWrap: 'wrap',
               }}
             >
-              {' '}
-              1. Most dentist recommend brushing for two to three minutes,
-              spending at least 30 seconds on each "quadrant" of the mouth.
+              1. Stains can adhere to both plaque and tartar buildup. Regular
+              use of dental floss removes plaque, helping to prevent the buildup
+              of plaque, which can lead to tartar.
             </Text>
 
             <Text
@@ -140,8 +140,9 @@ const IndexAboutFlossingContainer = () => {
                 marginHorizontal: 15,
               }}
             >
-              2. Brushing teeth properly means taking care to reach every tooth
-              as well as every surface of every tooth.
+              2. Flossing can simply make them look brighter by removing plaque
+              and excess food particles that may not be seen in the mirror or in
+              areas that toothbrush doesnt reach.
             </Text>
 
             <Text
@@ -152,20 +153,8 @@ const IndexAboutFlossingContainer = () => {
                 marginHorizontal: 15,
               }}
             >
-              3. The tongue harbours a multitude of bacteria. A regular brush or
-              a tongue scraper can be used.
-            </Text>
-
-            <Text
-              style={{
-                fontWeight: '800',
-                fontSize: 16,
-                marginTop: 15,
-                marginHorizontal: 15,
-              }}
-            >
-              4. Many toothbrushes nowadays are designed as a tongue cleaners
-              too. One example is the oral-B cross Action
+              3. Teeth whitening product should be replaced with flossing as
+              after flossing, appearance of stained teeth can improve.
             </Text>
           </View>
         </ScrollView>
