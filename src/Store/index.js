@@ -16,16 +16,18 @@ import { api } from '@/Services/api'
 import theme from './Theme'
 import children from '@/Features/children'
 import parent from '@/Features/parent'
+import toothprogress from '@/Features/toothprogress'
 
 const reducers = combineReducers({
   theme,
   api: api.reducer,
   children,
-  parent
+  parent,
+  toothprogress
 })
 
 const persistConfig = {
-  key: 'fairytooth122',
+  key: 'uagvgiryt22556',
   storage: AsyncStorage
 }
 

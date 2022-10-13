@@ -19,7 +19,7 @@ const Rinsing = () => {
 
     const handleFinish = () => {
         showAlert("Activity completed", "success");
-        navigateAndSimpleReset("Home");
+        navigateAndSimpleReset("Drawer");
     }
 
 

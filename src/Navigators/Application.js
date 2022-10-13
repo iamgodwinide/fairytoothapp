@@ -42,7 +42,7 @@ const ApplicationNavigator = () => {
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="WaterPlan"
+          initialRouteName="Main"
         >
           {/* <Stack.Screen name="Startup" component={StartupContainer} /> */}
 
@@ -68,18 +68,18 @@ const ApplicationNavigator = () => {
           }
 
           <Stack.Screen
-            name="Waterplan"
-            component={IndexWaterPlan}
-            options={{
-              animationEnabled: false,
-            }}
-          />
-
-          <Stack.Screen
             name="Drawer"
             component={DrawerNavigator}
             options={{
               animationEnabled: true,
+            }}
+          />
+
+          <Stack.Screen
+            name="Waterplan"
+            component={IndexWaterPlan}
+            options={{
+              animationEnabled: false,
             }}
           />
 

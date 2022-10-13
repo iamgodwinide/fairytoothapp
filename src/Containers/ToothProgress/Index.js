@@ -1,15 +1,23 @@
-import { StyleSheet, Text, View, Pressable, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { StyleSheet, Text, View, Pressable, ScrollView, TouchableOpacity, useWindowDimensions, Modal } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-dynamic-vector-icons/build/dist/Icon';
 import { Colors, MetricsSizes } from '@/Theme/Variables';
 import { useNavigation } from '@react-navigation/native';
 import { Area, Chart, HorizontalAxis, Line, VerticalAxis } from 'react-native-responsive-linechart';
 import FloatingButton from '@/Components/FloatingButton';
+import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
+import { TextInput } from 'react-native-gesture-handler';
+import { addProgress } from '@/Features/toothprogress';
 
 
 const IndexToothProgressContainer = () => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     const SCREENWIDTH = useWindowDimensions().width;
+    const toothprogress = useSelector(state => state.toothprogress.progress);
+    const [isOpen, setIsOpen] = useState(false);
+    const [num, setNumber] = useState("");
 
     const data = [
         { x: 1, y: 5 },
@@ -77,11 +85,66 @@ const IndexToothProgressContainer = () => {
         { x: 30, y: 9 },
     ]
 
+    const handleAdd = () => {
+        console.log(num);
+        setIsOpen(false);
+        if (num > 0) {
+            dispatch(addProgress({
+                date: new Date().toDateString(),
+                number: num
+            }))
+        }
+    }
+
+
     return (
         <View style={{
             backgroundColor: Colors.white,
             flex: 1
         }}>
+            <Modal
+                visible={isOpen}
+                transparent
+            >
+                <View style={{
+                    backgroundColor: "rgba(255,255,255,.8)",
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}>
+                    <TextInput
+                        onChangeText={text => setNumber(text)}
+                        style={{
+                            color: "#000",
+                            fontFamily: "NotoSans-Bold",
+                            borderWidth: 2,
+                            borderColor: "#000",
+                            width: 200,
+                            padding: 10,
+                            borderRadius: 10,
+                            marginVertical: 10
+                        }}
+                        keyboardType={"number-pad"}
+                        placeholderTextColor="#000"
+                        placeholder='Number of tooth lost'
+                    />
+                    <TouchableOpacity
+                        onPress={handleAdd}
+                        style={{
+                            padding: 10,
+                            backgroundColor: "blue",
+                            borderRadius: 10,
+                            width: 150
+                        }}>
+                        <Text style={{
+                            color: "#fff",
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            textAlign: "center"
+                        }}>Add</Text>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
             <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -117,7 +180,7 @@ const IndexToothProgressContainer = () => {
                     </TouchableOpacity>
                     <Text style={[styles.text, {
                         color: "grey"
-                    }]}>August 2018</Text>
+                    }]}>{moment().format("MMMM")} {new Date().getFullYear()}</Text>
                     <TouchableOpacity>
                         <Icon name='chevron-thin-right' type='Entypo' size={25} color="lightgrey" />
                     </TouchableOpacity>
@@ -202,29 +265,23 @@ const IndexToothProgressContainer = () => {
                             <View style={styles.column}>
                                 <Text style={styles.text}>Number of tooth lost</Text>
                             </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>Jan 15, 2021</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>2</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>Jan 15, 2021</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>2</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>Jan 15, 2021</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <Text style={styles.text}>2</Text>
-                            </View>
+                            {
+                                toothprogress.map((prog, key) => (
+                                    <>
+                                        <View key={key + "first"} style={styles.column}>
+                                            <Text style={styles.text}>{moment(prog.date).format("DD MMM YYYY")}</Text>
+                                        </View>
+                                        <View key={key + "second"} style={styles.column}>
+                                            <Text style={styles.text}>{prog.number}</Text>
+                                        </View>
+                                    </>
+                                ))
+                            }
                         </View>
                     </View>
                 </View>
                 <FloatingButton
-                    onPress={() => false}
+                    onPress={() => setIsOpen(true)}
                 />
             </ScrollView>
         </View>

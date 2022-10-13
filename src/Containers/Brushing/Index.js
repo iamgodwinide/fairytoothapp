@@ -1,4 +1,4 @@
-import { Alert, BackHandler, Pressable, StyleSheet, Text, View } from 'react-native'
+import { BackHandler, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import Icon from 'react-native-dynamic-vector-icons'
@@ -6,11 +6,9 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { Colors } from '@/Theme/Variables'
 import Slider from '@react-native-community/slider';
 import Ripple from 'react-native-material-ripple'
-import { useEffect } from 'react'
 import CountDown from 'react-native-countdown-component';
 import showAlert from '@/utils/message'
 import { useCallback } from 'react'
-import { navigateAndSimpleReset } from '@/Navigators/utils'
 
 const Brushing = () => {
     const navigation = useNavigation();
@@ -27,7 +25,7 @@ const Brushing = () => {
     }
 
     const handleFinish = () => {
-        showAlert("Maximum brushing time reach, proceed to flossing.", "warning");
+        showAlert("Maximum brushing time reach.", "warning");
     }
 
     useFocusEffect(

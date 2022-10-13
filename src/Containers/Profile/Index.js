@@ -131,13 +131,13 @@ const IndexProfileContainer = ({ route }) => {
                         <Icon name='chart' type='EvilIcons' size={65} color={"grey"} />
                     </Box>
                     <Box
-                        onPress={() => navigation.navigate("ProfileSettings")}
+                        onPress={() => navigation.navigate("ProfileSettings", { childId: child.id })}
                         text="Profile Settings"
                     >
                         <Icon name='settings' type='Feather' size={60} color={"grey"} />
                     </Box>
                     <Box
-                        onPress={() => navigation.navigate("WaterSettings")}
+                        onPress={() => navigation.navigate("Waterplan", { id: child.id })}
                         text="Water Intake"
                     >
                         <Icon name='water-outline' type='Ionicons' size={60} color={"grey"} />

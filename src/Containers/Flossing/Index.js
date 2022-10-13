@@ -28,7 +28,7 @@ const Flossing = () => {
     }
 
     const handleFinish = () => {
-        showAlert("Maximum flossing time reach, proceed to flossing.", "warning");
+        showAlert("Maximum flossing time reach.", "warning");
     }
 
     useFocusEffect(

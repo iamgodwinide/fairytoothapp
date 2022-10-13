@@ -10,13 +10,20 @@ import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import ActionButton from '@/Components/ActionButton';
+import { updateChild } from '@/Features/children';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-const IndexProfileSettingsContainer = () => {
+const IndexProfileSettingsContainer = ({ route }) => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     const { Images } = useTheme()
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState(new Date());
     const [gender, setGender] = useState("Male");
+    const [name, setName] = useState("");
+    const [child, setChild] = useState({});
+    const children = useSelector(state => state.children);
 
     const sliderPosition = useSharedValue(0);
 
@@ -27,14 +34,43 @@ const IndexProfileSettingsContainer = () => {
     });
 
     const handleSlide = () => {
-        if (sliderPosition.value === 0) {
+        if (gender === "Male") {
             sliderPosition.value = withTiming(75, { duration: 300 });
             setGender("Female");
-        } else {
+        }
+        if (gender === "Female") {
             sliderPosition.value = withTiming(0, { duration: 300 });
             setGender("Male");
         }
     }
+    const inithandleSlide = child => {
+        if (child.gender === "Female") {
+            sliderPosition.value = withTiming(75, { duration: 300 });
+        }
+        if (child.gender === "Male") {
+            sliderPosition.value = withTiming(0, { duration: 300 });
+        }
+    }
+
+    const handleSave = () => {
+        dispatch(updateChild({
+            ...child,
+            name,
+            birthday: new Date(date).toDateString(),
+            gender
+        }))
+        navigation.goBack();
+    }
+
+    useEffect(() => {
+        const { childId } = route.params;
+        const child = children[childId];
+        setChild(child);
+        setName(child.name);
+        setGender(child.gender);
+        setDate(new Date(child.birthday));
+        inithandleSlide(child);
+    }, [])
 
 
     return (
@@ -111,27 +147,31 @@ const IndexProfileSettingsContainer = () => {
                         Child's Name
                     </Text>
                     <TextInput
-                        value='Darwin'
+                        value={name}
                         style={[
                             styles.text,
                             {
                                 width: 150,
                                 backgroundColor: "transparent"
                             }]}
+                        onChangeText={text => setName(text)}
 
                     />
                 </View>
                 <Separator />
 
 
-                <ActionButton text={"Save Settings"} onPress={() => navigation.goBack()} />
+                <ActionButton text={"Save Settings"} onPress={handleSave} />
 
                 {/* date picker */}
                 <DatePicker
                     modal
                     open={open}
                     date={date}
-                    onConfirm={date => setDate(date)}
+                    onConfirm={date => {
+                        setDate(date);
+                        setOpen(false);
+                    }}
                     onCancel={() => setOpen(false)}
                 />
             </ScrollView>
