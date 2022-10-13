@@ -99,7 +99,7 @@ export function DrawerContent(props) {
                   marginStart: -24,
                 }}
                 onPress={() => {
-                  props.navigation.navigate('Flossing')
+                  props.navigation.navigate('AboutFlossing')
                 }}
               />
 
@@ -123,7 +123,7 @@ export function DrawerContent(props) {
                   marginStart: -25,
                 }}
                 onPress={() => {
-                  props.navigation.navigate('Rinsing')
+                  props.navigation.navigate('AboutRinsing')
                 }}
               />
 
@@ -147,7 +147,7 @@ export function DrawerContent(props) {
                   marginStart: -15,
                 }}
                 onPress={() => {
-                  props.navigation.navigate('Health')
+                  props.navigation.navigate('AboutHealth')
                 }}
               />
             </View>

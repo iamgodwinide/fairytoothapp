@@ -14,6 +14,9 @@ export { default as IndexFlossInstructionContainer } from './FlossInstruction/In
 export { default as IndexFlossingContainer } from './Flossing/Index'
 export { default as IndexRinseInstructionContainer } from './RinseInstruction/Index'
 export { default as IndexRinsingContainer } from './Rinsing/Index'
-export { default as IndexAboutBrushing } from './AboutBrushing/Index'
+export { default as IndexAboutBrushingContainer } from './AboutBrushing/Index'
+export { default as IndexAboutFlossingContainer } from './AboutFlossing/Index'
+export { default as IndexAboutRinsingContainer } from './AboutRinsing/Index'
+export { default as IndexAboutHealthCareContainer } from './AboutHealthCare/Index'
 export { default as IndexWaterPlan } from './WaterPlan/Index'
 

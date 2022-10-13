@@ -18,6 +18,8 @@ export default function () {
     flossing: require("@/Assets/Images/Flossing.png"),
     brushing: require("@/Assets/Images/Brushing.png"),
     kidsBrush: require("@/Assets/Images/KidsBrushing.jpg"),
-    
+    kidsFloss: require("@/Assets/Images/KidFlossing.jpg"),
+    kidsRinse: require("@/Assets/Images/KidRinsing.jpg"),
+    kidsHealth: require("@/Assets/Images/HealthCare.jpg"),
   }
 }
